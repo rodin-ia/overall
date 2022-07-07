@@ -2,7 +2,7 @@ NM + dnsmasq + PXE + grub
 
 1. config dnsmasq (NM) /etc/NetworkManager/dnsmasq-shared.d/pxe.conf
 
-’’’
+```
 enable-tftp
 tftp-no-blocksize
 log-dhcp
@@ -15,8 +15,9 @@ dhcp-boot=tag:BIOS,/boot/grub/i386-pc/core.0
 dhcp-boot=tag:EFI,/boot/grub/x86_64-efi/core.efi
 
 tftp-root=/srv/tftp/
-’’’
+```
 2. Dir Tree /srv/
+```
 ├── http
 ├── nfs
 │   └── kubuntu
@@ -43,12 +44,13 @@ tftp-root=/srv/tftp/
             └── k
                 ├── 2004
                 └── 2204
-
+```
 3. generate grub
+```
 grub-mknetdir --net-directory=/srv/tftp/
-
+```
 4. /srv/tftp/boot/grub/grub.cfg
-
+```
 function load_video {
   insmod efi_gop
   insmod efi_uga
@@ -92,7 +94,9 @@ submenu "Legacy" {
   }
 
 }
-
+```
 
 .add extra files to ISO FreeDOS
+```
 mkisofs -o ../FD_BIOS.iso -q -l -N -boot-info-table -iso-level 4 -no-emul-boot -b isolinux/isolinux.bin -publisher "FD_BIOS" -A "FD_BIOS" -V FD_BIOS -v .
+```
