@@ -2,6 +2,7 @@ NM + dnsmasq + PXE + grub
 
 1. config dnsmasq (NM) /etc/NetworkManager/dnsmasq-shared.d/pxe.conf
 
+’’’
 enable-tftp
 tftp-no-blocksize
 log-dhcp
@@ -14,7 +15,7 @@ dhcp-boot=tag:BIOS,/boot/grub/i386-pc/core.0
 dhcp-boot=tag:EFI,/boot/grub/x86_64-efi/core.efi
 
 tftp-root=/srv/tftp/
-
+’’’
 2. Dir Tree /srv/
 ├── http
 ├── nfs
